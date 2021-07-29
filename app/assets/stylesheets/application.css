@@ -13,9 +13,45 @@
  *= require_tree .
  *= require application.css
  */
-.flash {
-    
+
+ body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    overflow-x: hidden;
+    color: white;
+    background-color: #2C353C;
+    text-align: center;
+}
+.navbar p {
+    font-family: cursive;
+    font-weight: bold;
+    font-size: medium;
+    text-align: left;
+}
+
+.navbar {    
+    color: white;
+    background-color:rgb(92, 48, 48);
+    background-clip: padding-box;
+    border: none;
+    border-bottom: 4px solid #999A9B;
+    border-radius: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 10px ;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2;
+}
+
+.flash.errors {
     color: red;
+}
+
+.flash.notices {
+    
+    color: green;
 
 }
 

@@ -59,3 +59,7 @@ gem "pry", "~> 0.14.1"
 gem "bcrypt", "~> 3.1"
 
 gem "rack-mini-profiler", "~> 2.3"
+
+gem "omniauth", "~> 2.0"
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"

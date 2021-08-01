@@ -44,13 +44,20 @@
     font-weight: 400;
     line-height: 2;
 }
-a {
+ .navbar a {
     background-color: rgba(245, 245, 245, 0.653);
     border: 2px blue solid; 
     border-radius: 10px; 
     padding: 5px;
+    display: inline-block;
+    width: 5em;
+}
 
-   
+.navbar .button_to{
+  position: relative;
+  display: inline-block;
+  padding: .8em;
+  box-sizing: inherit;
 }
 form {
     width: 40%;

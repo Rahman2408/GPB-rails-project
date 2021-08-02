@@ -1,0 +1,11 @@
+<h1> New Project </h1>
+
+<%= form_for @project do |f| %>
+  <%= f.label :title, "Title:" %>
+  <%= f.text_field :title %>
+  <%= f.label :goal, "Main Goal:" %>
+  <%= f.text_field :goal %>
+  <%= f.label :contributors, "Contributors:" %>
+  <%= f.collection_check_boxes :partner_user_ids, User.all, :id, :name %>
+  <%= f.submit "Create Project" %>
+  <% end %>

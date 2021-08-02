@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index 
-    @projects = Project.all
+    
   end
 
 
@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def create 
-    
+
   end
 
   private 

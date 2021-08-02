@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :project_features
-    has_many :partners
-    has_many :partners, through: :partnerships  
+    has_many :partnerships, dependent: :destroy
+    has_many :partners, through: :partnerships
     has_many :projects, through: :project_features
     validates :email, uniqueness: true, uniqueness: {case_sensitive: false }, presence: true
     validates :name , presence: true
@@ -14,5 +14,12 @@ class User < ApplicationRecord
         end
     end
 
+    def self.search(string)
+        if string.present?
+        where("name or email LIKE ?", "%#{string}%")
+        else 
+          self.all
+        end 
+      end
 
 end

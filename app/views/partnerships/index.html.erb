@@ -1,0 +1,11 @@
+<h1>Your Project Partners</h1>
+  <% unless @partners.nil? %>
+  <% @partners.each do |partner| %>
+    <%= render partial: "partners", locals: {partner: partner} %><br>
+    <% end%>
+  <% else %>
+    <p>You currently have no partners</p>
+  <% end %>
+
+
+<%=  link_to "Find New Partner", user_find_partners_path%>

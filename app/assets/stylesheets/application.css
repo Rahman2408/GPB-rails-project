@@ -63,6 +63,7 @@ form {
     width: 40%;
     margin:  auto;
     margin-left: 25%;
+
   }
   
   label,
@@ -88,6 +89,7 @@ form {
   
   input+input {
     float: right;
+    
   }
 
 .flash.errors {

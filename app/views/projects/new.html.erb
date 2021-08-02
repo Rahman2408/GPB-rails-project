@@ -6,6 +6,6 @@
   <%= f.label :goal, "Main Goal:" %>
   <%= f.text_field :goal %>
   <%= f.label :contributors, "Contributors:" %>
-  <%= f.collection_check_boxes :partner_user_ids, User.all, :id, :name %>
+ 
   <%= f.submit "Create Project" %>
   <% end %>

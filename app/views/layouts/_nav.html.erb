@@ -1,6 +1,7 @@
 <nav class="navbar">
   <% if logged_in? %>
     <p>Logged in as, <%= current_user.name.titleize %></p>
+    
     <%= link_to "Accout", user_path(current_user.id) %>
     <%= link_to "Log Out", logout_path, method: "delete" %>
   <% else %>

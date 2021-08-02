@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
 
     def git_goin 
         user_creds = request.env["omniauth.auth"]["info"]
-        byebug
         user = User.github_access(user_creds)
             if user 
                 session[:user_id] = user.id

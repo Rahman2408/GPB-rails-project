@@ -22,4 +22,8 @@ class User < ApplicationRecord
         end 
       end
 
+  def my_partners
+    Partnership.all.where(user_id: self.id)
+  end
+
 end

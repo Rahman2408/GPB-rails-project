@@ -60,38 +60,33 @@
   box-sizing: inherit;
 }
 form {
-    width: 40%;
-    margin:  auto;
-    margin-left: 25%;
+    width: 30em;
+    
+    margin-left: 40%;
+    text-align: left;
 
   }
-  
+  input  { width: 30em;  }
   label,
   input {
-   
+  
     display: inline-block;
   }
   
   label {
-    width:26%;
+    width:10em;
   
     text-align: left;
   }
   
-  label+input {
-    width: 40%;
-
-    margin: auto;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-  }
+ 
   
   
-  input+input {
-    float: right;
-    
+ 
+  #selection {
+    width: 3em;
+    height: initial;
   }
-
 .flash.errors {
     color: red;
 }

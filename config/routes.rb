@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index] do 
     resources :partnerships, only: [:new, :create, :show, :index]
     post "/partnerships/:id/delete" => "partnerships#delete"
+    resources :projects
   end
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"

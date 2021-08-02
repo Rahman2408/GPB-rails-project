@@ -2,10 +2,15 @@
 
 <%= form_for @project do |f| %>
   <%= f.label :title, "Title:" %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title %><br>
   <%= f.label :goal, "Main Goal:" %>
-  <%= f.text_field :goal %>
+  <%= f.text_field :goal %><br>
   <%= f.label :contributors, "Contributors:" %>
- 
+  <br>
+  
+    <div id="selection">
+  <%= f.collection_check_boxes :partner_ids, current_user.partners, :id , :name %>
+  <br>
+ </div>
   <%= f.submit "Create Project" %>
   <% end %>

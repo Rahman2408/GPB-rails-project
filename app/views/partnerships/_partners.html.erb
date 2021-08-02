@@ -6,7 +6,7 @@
   <% if current_user == partner %>
       <p>(You)</p>
   <% elsif current_user.partners.include?(partner) %>
-      <p>(Already a Partner)</p>
+      <p>(Active Partner) <%= button_to "Remove?", {action: "delete", id: partner.id} %></p>
       
   <% else%>
     <%= button_to "Add Partner", {action: "create", id: partner.id} %>

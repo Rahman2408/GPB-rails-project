@@ -18,8 +18,16 @@ class PartnershipsController < ApplicationController
         flash[:errors]= [p.errors.full_messages]
         render partial: "partners"
       end
+
   end
 
+  def delete 
+    user = User.find(params[:user_id])
+    user.partners.delete(params[:id])
+    flash[:notice] = [" Partner Removed"]
+        redirect_to user_partnerships_path
+  end
+  
   def index 
     @user = User.find(params[:user_id])
    @partners = @user.partners 

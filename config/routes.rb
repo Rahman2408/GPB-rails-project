@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:new, :create, :show, :index]
   resources :users, only: [:new, :create, :show, :index] do 
     resources :partnerships, only: [:new, :create, :show, :index]
-    get "/find_partners" => "partnerships#find_partners"
+    post "/partnerships/:id/delete" => "partnerships#delete"
   end
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"

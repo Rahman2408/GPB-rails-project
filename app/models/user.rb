@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_many :project_features
+    has_many :partners
+    has_many :partners, through: :partnerships  
     has_many :projects, through: :project_features
     validates :email, uniqueness: true, uniqueness: {case_sensitive: false }, presence: true
     validates :name , presence: true

@@ -3,7 +3,12 @@
     Name: <%= partner.name %><br>
   
     Email: <%= partner.email %><br>
-    
-  
-  
+  <% if current_user == partner %>
+      <p>(You)</p>
+  <% elsif current_user.partners.include?(partner) %>
+      <p>(Already a Partner)</p>
+      
+  <% else%>
+    <%= button_to "Add Partner", {action: "create", id: partner.id} %>
+  <% end%>
 </ul>

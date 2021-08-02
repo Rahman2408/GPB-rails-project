@@ -1,16 +1,23 @@
 class PartnershipsController < ApplicationController
   before_action :set_user
   
-  def find_partners
-    @partners = User.search(params[:query])
-  end
+ 
 
   def new 
+    @partners = User.search(params[:query])
     @partnership  = Partnership.new
   end
 
   def create 
     
+    p = Partnership.new(user_id: params[:user_id] , partner_id: params[:id])
+      if p.save
+        flash[:notice] = ["Success! Partner Added"]
+        redirect_to user_partnerships_path
+      else
+        flash[:errors]= [p.errors.full_messages]
+        render partial: "partners"
+      end
   end
 
   def index 

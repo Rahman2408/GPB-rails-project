@@ -1,10 +1,10 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
     has_many :projects
+    has_many :partners, class_name: 'User'
     has_many :groups, through: :projects 
-    has_many :groups
     has_many :partners, through: :groups
-    has_many :project_features
-    has_many :projects, through: :project_features
+    # has_many :project_features
+    # has_many :projects, through: :project_features
    
     validates :email, :uniqueness => { case_sensitive: false }, presence: true
     validates :name , presence: true
@@ -24,7 +24,4 @@ class User < ApplicationRecord
           self.all
         end 
      end
-
-     
-
 end

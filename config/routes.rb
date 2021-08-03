@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   
-  root "welcome#home"
+  get '/' => "welcome#home"
 
 
-  resources :projects
+  resources :projects do 
+    resources :project_features, as: "features"
+  end
+
   resources :users, only: [:new, :create, :show, :index] do 
     resources :groups, only: [:new, :create, :show, :index]
     post "/groups/:id/delete" => "groups#delete"
-    resources :projects
+    
   end
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"

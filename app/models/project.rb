@@ -1,11 +1,11 @@
-class Project < ApplicationRecord
-    belongs_to :group
+class Project < ActiveRecord::Base 
+    belongs_to :group, optional: true 
     belongs_to :user 
-    has_many :partners
+    has_many :partners, class_name: 'User', optional: true
     has_many :project_features
     has_many :users, through: :project_features
     accepts_nested_attributes_for :partners
-    validates :title, :goal, presence: true
+    validates_presence_of :title, :goal
   
     def self.set_partners(contributors)
         arry=[]

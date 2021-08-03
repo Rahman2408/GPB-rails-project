@@ -3,11 +3,11 @@ class GroupsController < ApplicationController
   
   def new 
     @partners = User.search(params[:query])
-    @group  = group.new
+    @group  = Group.new
   end
 
   def create 
-    p = group.new(user_id: params[:user_id] , partner_id: params[:id])
+    p = Group.new(user_id: params[:user_id] , partner_id: params[:id])
       if p.save
         flash[:notice] = ["Success! Partner Added"]
         redirect_to new_user_group_path
@@ -31,11 +31,14 @@ class GroupsController < ApplicationController
 
   private 
    def set_user
-    params[:user_id] = current_user.id
-   end
-
+    if params[:user_id]
+        params[:user_id] = current_user.id
+    else 
+      @user = User.find_by_id(current_user.id)
+      end
+    end
+    
   def group_params 
     params.require(:group).permit( :user_id, :partner_id)
-    
   end
 end

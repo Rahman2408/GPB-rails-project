@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+    before_action :set_user
     
     def new 
         @user = User.new 
@@ -29,4 +29,11 @@ private
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
+    def set_user 
+        if params[:user_id]
+            params[:user_id] = current_user.id
+        else
+            @user = User.find_by_id(current_user.id)
+        end
+    end
 end

@@ -82,12 +82,12 @@ form {
   
  
  
-  #selection input , #selection label {
-    align-items: center ;
-   
-    text-align: center;
+  .selection input , .selection label {
+    display: table;
+    margin-left: 45%;
+    
     width: auto; 
-    margin: 1em;
+   
 }
  .button_to input{
       width: max-content !important; 

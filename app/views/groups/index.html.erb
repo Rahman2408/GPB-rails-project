@@ -1,4 +1,3 @@
-<h1>Your Project Partners</h1>
   <% unless @partners.empty? %>
   <% @partners.each do |partner| %>
     <%= render partial: "partners", locals: {partner: partner} %><br>

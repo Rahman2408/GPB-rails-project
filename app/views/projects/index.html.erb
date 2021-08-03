@@ -1,8 +1,8 @@
 <% @projects.each do |p|%>
 
-<h2><%=  link_to p.title, user_project_path(p) %></h2>
+<h2><%=  link_to p.title, project_path(p) %></h2>
 
 <% end %>
 
-<%= link_to 'New Project', new_user_project_path(user_id: current_user.id) %>
+<%= button_to 'New Project', new_project_path, :method => "get" %>
 

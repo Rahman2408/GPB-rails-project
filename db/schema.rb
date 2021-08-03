@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_111453) do
+ActiveRecord::Schema.define(version: 2021_08_02_024410) do
 
-  create_table "partnerships", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
+    t.string "group_project"
     t.integer "user_id"
     t.integer "partner_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
   end
 
   create_table "project_features", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "user_id", null: false
-    t.integer "project_id", null: false
+    t.integer "user_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,16 +33,13 @@ ActiveRecord::Schema.define(version: 2021_08_02_111453) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "goal"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "group_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

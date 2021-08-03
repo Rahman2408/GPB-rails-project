@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root "welcome#home"
 
 
-  resources :projects, only: [:new, :create, :show, :index]
+  resources :projects
   resources :users, only: [:new, :create, :show, :index] do 
-    resources :partnerships, only: [:new, :create, :show, :index]
-    post "/partnerships/:id/delete" => "partnerships#delete"
+    resources :groups, only: [:new, :create, :show, :index]
+    post "/groups/:id/delete" => "groups#delete"
     resources :projects
   end
   get "/login", to: "sessions#login", as: "login"

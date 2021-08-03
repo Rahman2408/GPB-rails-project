@@ -60,33 +60,39 @@
   box-sizing: inherit;
 }
 form {
-    width: 30em;
+    align-items: center;
     
-    margin-left: 40%;
-    text-align: left;
+  }
+  input  { width: 30em; align-items: center; }
+  
+  label {width: 8em;
+  text-align: left;}
 
-  }
-  input  { width: 30em;  }
-  label,
+  label ,
   input {
-  
     display: inline-block;
+    margin: 0.5em;
+    align-items:center;
   }
-  
-  label {
-    width:10em;
-  
-    text-align: left;
-  }
+ 
+
   
  
   
   
  
-  #selection {
-    width: 3em;
-    height: initial;
-  }
+ 
+  #selection input , #selection label {
+    align-items: center ;
+   
+    text-align: center;
+    width: auto; 
+    margin: 1em;
+}
+ .button_to input{
+      width: max-content !important; 
+      align-items: relative !important;
+                }
 .flash.errors {
     color: red;
 }

@@ -1,31 +1,27 @@
-class PartnershipsController < ApplicationController
+class GroupsController < ApplicationController
   before_action :set_user
   
- 
-
   def new 
     @partners = User.search(params[:query])
-    @partnership  = Partnership.new
+    @group  = group.new
   end
 
   def create 
-    
-    p = Partnership.new(user_id: params[:user_id] , partner_id: params[:id])
+    p = group.new(user_id: params[:user_id] , partner_id: params[:id])
       if p.save
         flash[:notice] = ["Success! Partner Added"]
-        redirect_to user_partnerships_path
+        redirect_to new_user_group_path
       else
         flash[:errors]= [p.errors.full_messages]
         render partial: "partners"
       end
-
   end
 
   def delete 
     user = User.find(params[:user_id])
     user.partners.delete(params[:id])
     flash[:notice] = [" Partner Removed"]
-        redirect_to user_partnerships_path
+        redirect_to user_groups_path
   end
   
   def index 
@@ -38,7 +34,8 @@ class PartnershipsController < ApplicationController
     params[:user_id] = current_user.id
    end
 
-  def partnership_params 
-    params.require(:partnership).permit( :user_id, :partner_id)
+  def group_params 
+    params.require(:group).permit( :user_id, :partner_id)
+    
   end
 end

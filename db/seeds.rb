@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: "Steve Jobs", email: "stevie@gmail.com" )
+User.create(name: "Steve Jobs", email: "stevie@gmail.com", password:"123456")
 
-Project.create(title: "Mac", goal: "Computer that puts Bill Gates out of business and is much easier to use than a Windows PC")
-
-ProjectFeature.create(name: "Messages", description: "App integrated into OS where users can read and send messages from their mac without needing to use their phone.", user_id: 1, project_id: 1 )
-
+User.create(name: "Test User 1", email: "test@email.com", password:"123456")
+User.create(name: "Test User 2", email: "test2@email.com", password:"123456")
+User.create(name: "Test User 3", email: "test3@email.com", password:"123456")
+User.create(name: "Test User 4", email: "test4@email.com", password:"123456")

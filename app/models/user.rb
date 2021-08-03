@@ -1,9 +1,12 @@
 class User < ApplicationRecord
+    has_many :projects
+    has_many :groups, through: :projects 
+    has_many :groups
+    has_many :partners, through: :groups
     has_many :project_features
-    has_many :partnerships, dependent: :destroy
-    has_many :partners, through: :partnerships
     has_many :projects, through: :project_features
-    validates :email, uniqueness: true, uniqueness: {case_sensitive: false }, presence: true
+   
+    validates :email, :uniqueness => { case_sensitive: false }, presence: true
     validates :name , presence: true
     has_secure_password
 
@@ -20,10 +23,8 @@ class User < ApplicationRecord
         else 
           self.all
         end 
-      end
+     end
 
-  def my_partners
-    Partnership.all.where(user_id: self.id)
-  end
+     
 
 end

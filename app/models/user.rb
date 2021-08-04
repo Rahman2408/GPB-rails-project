@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
     has_many :projects
-    has_many :partners, class_name: 'User'
+    has_many :partners, foreign_key: "partner_id"
     has_many :groups, through: :projects 
     has_many :partners, through: :groups
     # has_many :project_features
@@ -24,4 +24,12 @@ class User < ActiveRecord::Base
           self.all
         end 
      end
+
+     def  self.name_search(string)
+        if string.present?
+            find_by(name: string).name
+        else
+            self.all 
+        end
+    end   
 end

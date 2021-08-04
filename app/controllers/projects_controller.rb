@@ -1,25 +1,29 @@
 class ProjectsController < ApplicationController
-  before_action :set_user 
+  before_action :set_user  
+  before_action  :set_partners, only: [:create]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
   
   def index
-    @projects = current_user.projects
+    
+    @projects = @user.projects
   end
 
 
   def new 
     @project = Project.new
     
-    @partners = User.search(params[:query]).where.not(id: current_user.id)  
+    # @partner_options = User.name_search(name: params[:query])
+    
   end
 
   def create 
-    @project = Project.new(project_params)
+    @project = Project.create(project_params)
+    
+    byebug
     # @project = Project.create
     # @project.partners = project_params[:partners]
-    # @partners = params.require(:partners).permit(:partner_ids)
-    
+    @project.user_id = current_user
     if @project.save
       
       flash[:notice] = ["Project Created!"]
@@ -50,10 +54,7 @@ class ProjectsController < ApplicationController
   private 
 
   def set_user 
-    if params[:user_id]
-      params[:user_id] = current_user.id
-      @user = User.find_by_id(:user_id)
-    end
+    @user = current_user
   end
 
   def set_project
@@ -61,6 +62,15 @@ class ProjectsController < ApplicationController
   end
   
   def project_params 
-    params.require(:project).permit(:title, :owner_id, :goal, :partners ,partner_ids:[] )
+    params.require(:project).permit(:title, :user_id, :goal , :partner_ids => [] )
   end
+
+  def set_user_id
+    
+  end
+  
+  def set_partners
+   @partners= Project.set_partners(params[:partner_ids])
+  end
+####BASICS ONLY!!!!
 end

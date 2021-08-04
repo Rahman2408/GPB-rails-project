@@ -1,6 +1,6 @@
 <h1> New Project </h1>
-  <h3>Select Partners to Contribute to the Project<h3>
- <%= render "add_partners" %>
+
+ <%# render "add_partners" %>
   <br>
 <%= form_for @project, url: projects_path(@project) , html: {method: :post}  do |f| %>
 <%# render partial: "layouts/errors", locals: {subject: @project} %>
@@ -8,7 +8,7 @@
   <%= f.text_field :title %><br>
   <%= f.label :goal, "Main Goal:" %>
   <%= f.text_field :goal %><br><br>
- 
+  <%= f.collection_check_boxes :partner_ids, User.all , :id , :name%>
 <br>
  
   <%= f.submit "Create Project" %>

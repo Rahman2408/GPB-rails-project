@@ -31,9 +31,15 @@ private
 
     def set_user 
         if params[:user_id]
-            params[:user_id] = current_user.id
-        else
-            @user = User.find_by_id(current_user.id)
+            @user  = User.find([:user_id])
+        else 
+          @user = User.find(params[:id])
         end
     end
+
+    # def other_users
+    #     arry = []
+    #     User.all.each {|u| arry << u unless u.id == current_user.id  }
+    #     arry
+    # end
 end

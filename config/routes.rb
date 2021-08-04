@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   
-  get '/' => "welcome#home"
-
-
+  root :to => "welcome#home"
   resources :projects do 
     resources :project_features, as: "features"
   end

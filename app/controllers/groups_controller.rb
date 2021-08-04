@@ -32,9 +32,9 @@ class GroupsController < ApplicationController
   private 
    def set_user
     if params[:user_id]
-        params[:user_id] = current_user.id
+        @user  = User.find(params[:user_id])
     else 
-      @user = User.find_by_id(current_user.id)
+      @user = User.find(params[:id])
       end
     end
     

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_024410) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "goal"
-    t.integer "group_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

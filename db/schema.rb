@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_003502) do
+ActiveRecord::Schema.define(version: 2021_08_05_210421) do
 
   create_table "project_features", force: :cascade do |t|
     t.string "name"
@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_003502) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "goal"
-    t.integer "owner_id", foreign_key: true 
+    t.integer "owner_id", null: false
+    t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_08_06_003502) do
 
   add_foreign_key "project_features", "projects"
   add_foreign_key "project_features", "users"
+  add_foreign_key "projects", "users", column: "owner_id"
 end

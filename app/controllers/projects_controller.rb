@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     @project = Project.create(project_params)
     @project.update(owner_id: @user.id)
     @project.project_features.update(user_id: current_user.id, project_id: @project.id)  
-
+byebug
     if @project.save && !@project.project_features.empty?
       flash[:notice] = ["Project Created!"]
       redirect_to project_path(@project.id)

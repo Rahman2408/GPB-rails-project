@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many :project_features,  dependent: :destroy 
+    has_many :project_features
     has_many :projects, -> {distinct}, through: :project_features
     validates :email, :uniqueness => { case_sensitive: false }, presence: true
     validates :name , presence: true

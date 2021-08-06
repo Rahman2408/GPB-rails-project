@@ -15,7 +15,7 @@ skip_before_action :set_project, only: [:update]
   def create 
     @feature = ProjectFeature.create(feature_params)
     @feature.update(user_id: @user.id, project_id: @project.id)
-    
+   
     if @feature.save 
       flash[:notice] = ["Feature Added!"]
       redirect_to project_feature_path(project_id: @project.id, id: @feature.id)
@@ -44,8 +44,14 @@ skip_before_action :set_project, only: [:update]
   end
 
   def destroy
-    @feature.destroy
-    redirect_to project_path(@project)
+    if @project.project_features.count == 1  
+      flash[:errors] = ["Needs at least one feature"]
+      render :show
+    else
+      @feature.delete
+      redirect_to project_path(@project)
+    end
+    
   end
 
   private 

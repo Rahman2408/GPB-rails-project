@@ -1,8 +1,9 @@
 <% features.each do |feature| %>
   <h2> <%= feature.name  %></h2> 
-    <% if feature.description%> 
+    <% if !feature.description.blank?%> 
       <h3>Description: <%= feature.description%></h3>
     <% else %>
       <h3>(No Description)</h3>
     <% end%>
+ 
   <% end%>

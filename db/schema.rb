@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_08_05_210421) do
     t.string "title"
     t.string "goal"
     t.integer "owner_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 

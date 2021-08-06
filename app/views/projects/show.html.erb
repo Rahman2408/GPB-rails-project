@@ -1,5 +1,5 @@
 <h1>Project: <%= @project.title %></h1>
-<h4>Created by - <%= @project.owner.name %></h4>
+<h4><%= created_by_at(@project.owner, @project) %></h4>
 <h2>Goal: <%= @project.goal %></h2>
 
 <h2>Features:</h2>

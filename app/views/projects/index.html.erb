@@ -12,6 +12,7 @@
 
 <% Project.all.where_not_mine(@user.id).each do |p|%>
 
-<h2><%=  link_to p.title, project_path(p) %> - by <%= p.owner.name%></h2>
+<h2><%=  link_to p.title, project_path(p) %></h2>  
+<h4><%= created_by_at(p.owner,p)%></h4>
 
 <% end %>

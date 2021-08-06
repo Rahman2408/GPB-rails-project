@@ -11,8 +11,6 @@ class SessionsController < ApplicationController
             flash[:notices] = ["Welcome back, #{user.name}!"]
             session[:user_id] = user.id
             redirect_to root_path
-        
-            
         else 
             flash[:errors] = ["Incorrect Email or Password"]
             redirect_to login_path
@@ -30,6 +28,7 @@ class SessionsController < ApplicationController
         user_creds = request.env["omniauth.auth"]["info"]
         user = User.github_access(user_creds)
             if user 
+                flash[:notices] = ["Welcome back, #{user.name}!"]
                 session[:user_id] = user.id
                 redirect_to root_path
             else

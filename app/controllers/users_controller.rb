@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user
+    before_action :set_user, only: [:show]
     
     def new 
         @user = User.new 
@@ -30,11 +30,7 @@ private
     end
 
     def set_user 
-        if params[:user_id]
-            @user  = User.find([:user_id])
-        else 
-          @user = User.find(params[:id])
-        end
+        @user = current_user
     end
 
     # def other_users

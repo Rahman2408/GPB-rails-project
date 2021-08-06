@@ -1,6 +1,7 @@
 <nav class="navbar">
+<h1>Group Project Builder</h1>
+    <p>Where Great Ideas Start, How All Ideas Evolve</p>
   <% if logged_in? %>
-    <p>Logged in as, <%= current_user.name.titleize %></p>
     <%= link_to 'Projects', projects_path %>
     <%= link_to "Accout", user_path(current_user.id) %>
     <%= link_to "Log Out", logout_path, method: "delete" %>

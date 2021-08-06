@@ -1,5 +1,5 @@
 <h1>Project: <%= @project.title %></h1>
-
+<h4>Created by - <%= @project.owner.name %></h4>
 <h2>Goal: <%= @project.goal %></h2>
 
 <h2>Features:</h2>
@@ -11,6 +11,5 @@
     <% end %>
     
 <%= button_to "Add Feature", new_project_feature_path(@project.id), method: "get" %><br><br>
-
 
 <%= button_to "Delete Project", {action: "destroy"}, method: "delete" if @project.is_mine(current_user) %>

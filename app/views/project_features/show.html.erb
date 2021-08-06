@@ -1,4 +1,4 @@
-<h1> Project: <%= link_to @project.title, project_path(@project)  %></h1>
+<h2> Project: <%= link_to @project.title, project_path(@project)  %></h2>
 
 <%= render partial: 'feature_details', locals: {feature: @feature} %> 
   <%if @project.is_mine(current_user) || @feature.is_mine(current_user.id) %>

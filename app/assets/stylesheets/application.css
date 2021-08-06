@@ -17,7 +17,7 @@
  body {
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 17px;
-    font-weight: 200;
+   
     overflow-x: hidden;
     color: white;
     background-color: #2C353C;
@@ -59,11 +59,7 @@
   padding: .8em;
   box-sizing: inherit;
 }
-form {
-    align-items: center;
-    
-  }
-  input  { width: 30em; align-items: center; }
+  input  { width: 30em; }
   
   label {width: 8em;
   text-align: left;}
@@ -82,11 +78,11 @@ form {
   
  
  
-  .selection input , .selection label {
+  form input , form label {
     display: table;
     margin-left: 45%;
     
-    width: auto; 
+    
    
 }
  .button_to input{

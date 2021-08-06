@@ -6,7 +6,7 @@
 
   <ul>
     <% @project.project_features.each do |feat|%>
-    <li><%= link_to feat.name, new_project_feature_path(@project.id) %></li><br>
+    <li><%= link_to feat.name, project_feature_path(@project.id) %></li><br>
  </ul>
     <% end %>
 

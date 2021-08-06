@@ -23,6 +23,7 @@
     background-color: #2C353C;
     text-align: center;
 }
+
 .navbar p {
     font-family: cursive;
     font-weight: bold;
@@ -47,10 +48,12 @@
  .navbar a {
     background-color: rgba(245, 245, 245, 0.653);
     border: 2px blue solid; 
-    border-radius: 10px; 
+    
     padding: 5px;
     display: inline-block;
     width: 5em;
+    border-radius: 5rem;
+    margin: 2em ;
 }
 
 .navbar .button_to{
@@ -70,25 +73,25 @@
     margin: 0.5em;
     align-items:center;
   }
- 
 
-  
- 
-  
-  
- 
  
   form input , form label {
     display: table;
     margin-left: 45%;
-    
-    
-   
 }
- .button_to input{
-      width: max-content !important; 
-      align-items: relative !important;
+
+body a {
+    background-color: rgba(245, 245, 245, 0.653);
+    border: 1px blue solid; 
+    padding: 4px;
+ 
+
+    width: auto;
+}
+ .button_to input, {
+      align-items: inherit !important;
                 }
+                
 .flash.errors {
     color: red;
 }

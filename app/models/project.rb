@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
     accepts_nested_attributes_for :project_features, reject_if: proc { |attributes| attributes['name'].blank?  }
     validates_presence_of :title, :goal
 
-
+  def is_mine(user)
+     self.owner == user ?  true : false
+  end
 
 end

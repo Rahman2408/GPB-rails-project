@@ -1,5 +1,5 @@
-<h1>Features for <%= @project.title  %></h1>
+<h1>Features for Project: <%= @project.title  %></h1>
 
-   <%= render partial: 'feature_details', locals: {features: @project.project_features} %> 
+<%= render partial: 'feature_details', locals: {features: @project.project_features} %> 
   
-  
+  <%= button_to "New Feature", new_project_feature_path(@project.id), method: "get" %>

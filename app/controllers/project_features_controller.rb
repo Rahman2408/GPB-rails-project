@@ -1,5 +1,7 @@
 class ProjectFeaturesController < ApplicationController
 before_action :set_user , :set_project
+before_action :set_feature, only: [:edit, :update, :destroy, :show]
+skip_before_action :set_project, only: [:update]
 
   def index
     @features = @project.project_features
@@ -27,13 +29,23 @@ before_action :set_user , :set_project
   end
 
   def edit 
+    
   end
 
   def update
+    @feature.update(feature_params)
+      if @feature.save 
+        flash[:notice] = ["Feature Updated!"]
+        redirect_to project_feature_path(project_id: @feature.project_id, id: @feature.id)
+      else
+        flash[:errors] = @feature.errors.full_messages
+        render "edit"
+      end
   end
 
   def destroy
-
+    @feature.destroy
+    redirect_to project_path(@project)
   end
 
   private 
@@ -48,5 +60,9 @@ before_action :set_user , :set_project
 
   def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def set_feature
+    @feature = ProjectFeature.find(params[:id])
   end
 end

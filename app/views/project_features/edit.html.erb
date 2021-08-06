@@ -1,0 +1,5 @@
+<h1>Edit Feature: <%=@feature.name%></h1>
+<%= form_for @feature do |f| %>
+<%= render partial: "feature_form", locals: {f: f} %>
+<%= f.submit(project_id: @feature.project_id, id:@feature.id) %>
+<% end %>

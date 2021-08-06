@@ -6,9 +6,11 @@
   
   <% @project.project_features.each do |feat|%>
   
-    <%= link_to feat.name, project_feature_path(project_id: feat.project_id) %><br><br>
+    <%= link_to feat.name, project_feature_path(project_id: @project.id, id: feat.id) %><br><br>
       
     <% end %>
     
 <%= button_to "Add Feature", new_project_feature_path(@project.id), method: "get" %><br><br>
+
+
 <%= button_to "Delete Project", {action: "destroy"}, method: "delete" if @project.is_mine(current_user) %>

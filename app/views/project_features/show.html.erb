@@ -1,5 +1,7 @@
-<h1>Features for Project: <%= @project.title  %></h1>
+<h1> Project: <%= link_to @project.title, project_path(@project)  %></h1>
 
-<%= render partial: 'feature_details', locals: {features: @project.project_features} %> 
-  
-  <%= button_to "New Feature", new_project_feature_path(@project.id), method: "get" %>
+<%= render partial: 'feature_details', locals: {feature: @feature} %> 
+  <%if @project.is_mine(current_user) || @feature.is_mine(current_user) %>
+<%= button_to "Edit Feature", edit_project_feature_path(project_id: @project.id, id: @feature.id), method: "get" %><br>
+<%= button_to "Delete Feature", project_feature_path(project_id: @project.id, id: @feature.id), method: "delete"%><br>
+   <% end%>

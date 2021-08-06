@@ -84,11 +84,10 @@ body a {
     background-color: rgba(245, 245, 245, 0.653);
     border: 1px blue solid; 
     padding: 4px;
- 
-
     width: auto;
 }
- .button_to input, {
+
+ .button_to input {
       align-items: inherit !important;
                 }
                 

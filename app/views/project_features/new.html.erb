@@ -1,0 +1,8 @@
+<h2>New Feature for: <%=  @project.title %></h2>
+
+<%= form_for @feature do |f| %>
+  
+  <%= render partial: "new_feature_form", locals: {f: f} %>
+
+<%= f.submit %>
+<% end %>

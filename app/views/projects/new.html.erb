@@ -9,12 +9,9 @@
   <%= f.label :goal, "Main Goal:" %>
   <%= f.text_field :goal %><br><br>
   <h4>Features:<h4>
-  <p> (name a feature this project will have, more can be added later)</p>
+  <p> (Name a feature this project will have. More can be added later!)</p>
   <%= f.fields_for :project_features, @project.project_features.build do |project_features| %>
-    <%= project_features.label :name, "Feature:" %>
-    <%= project_features.text_field :name %><br>
-    <%= project_features.label :description, "Description: (optional)" %>
-    <%= project_features.text_area :description %>
+    <%= render partial: "project_features/new_feature_form", locals: {f: project_features} %>
     <% end %>
 <br>
  

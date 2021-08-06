@@ -17,16 +17,12 @@ class ProjectsController < ApplicationController
     
     @project = Project.create(project_params)
     @project.update(owner_id: @user.id)
-    byebug
     @project.project_features.update(user_id: current_user.id, project_id: @project.id)  
-    
-    
-    
+
     if @project.save && !@project.project_features.empty?
       flash[:notice] = ["Project Created!"]
       redirect_to project_path(@project.id)
     else
-      
       flash[:errors] = @project.errors.full_messages 
       flash[:errors] << "Needs at least one feature" if @project.project_features.empty?
       render :new

@@ -8,7 +8,13 @@
   <%= f.text_field :title %><br>
   <%= f.label :goal, "Main Goal:" %>
   <%= f.text_field :goal %><br><br>
-  <%= f.collection_check_boxes :partner_ids, User.all , :id , :name%>
+  <h4>Features:<h4>
+  <%= f.fields_for :project_features, @project.project_features.build do |project_features| %>
+    <%= project_features.label :name %>
+    <%= project_features.text_field :name %><br>
+    <%= project_features.label :description %>
+    <%= project_features.text_area :description %>
+    <% end %>
 <br>
  
   <%= f.submit "Create Project" %>

@@ -6,9 +6,9 @@
         <%= text_field_tag :query, params[:query]  %>
         <%= submit_tag("Search", :name => nil) %>
     </p><br><br>
-    <div class="selection">
-    <%= collection_check_boxes(:project, :partner_ids, User.search(params[:query]).where.not(id: current_user.id), :id, :name  ) %>
-    </div>
+   
+    <%# collection_check_boxes(:project, :partner_ids, User.search(params[:query]).where.not(id: current_user.id), :id, :name  ) %>
+    
 
 <% end%>
 

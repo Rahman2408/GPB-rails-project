@@ -2,8 +2,14 @@
 
 <h2>Goal: <%= @project.goal %></h2>
 
-<h3>Contributors:</h3>
-<ul>
-<%  %>
-
+<h3>Features:</h3>
+  <% if !@project.project_features.nil? && @project.project_features.count > 0%>
+  <ul>
+    <% @project.project_features.each do |feat|%>
+    <li><%= feat.name %>: <%= feat.description %></li><br>
+ </ul>
+    <% end %>
+  <% else  %>
+   <p>No features yet</p>
+   <% end%>
 <%= button_to "Delete", {action: "destroy"}, method: "delete"  %>

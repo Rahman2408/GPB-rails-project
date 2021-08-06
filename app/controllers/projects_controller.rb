@@ -1,11 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :set_user  
-  
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
   
   def index
-    
     @projects = @user.projects
   end
 
@@ -17,11 +15,11 @@ class ProjectsController < ApplicationController
 
   def create 
     @project = Project.create(project_params)
+    @project.update(owner_id: @user.id)
+    @project.project_features.update(user_id: current_user.id, project_id: @project.id)  
     
-    @project.project_features.update(user_id: current_user.id, project_id: @project.id)
     
-    byebug
-   
+    
     if @project.save
       
       flash[:notice] = ["Project Created!"]
@@ -60,11 +58,7 @@ class ProjectsController < ApplicationController
   end
   
   def project_params 
-    params.require(:project).permit(:title,  :goal, project_features_attributes: [[:name], [:description]])
-  end
-  
-  def set_partners
-  # @partners= Project.set_partners(project_params[:partner_ids])
+    params.require(:project).permit(:title, :goal, project_features_attributes: [[:name], [:description]])
   end
 ####BASICS ONLY!!!!
 end

@@ -3,7 +3,7 @@
 <h2>Goal: <%= @project.goal %></h2>
 
 <h3>Features:</h3>
-  <% if !@project.project_features.nil? && @project.project_features.count > 0%>
+  <% if !@project.project_features.empty? %>
   <ul>
     <% @project.project_features.each do |feat|%>
     <li><%= feat.name %>: <%= feat.description %></li><br>

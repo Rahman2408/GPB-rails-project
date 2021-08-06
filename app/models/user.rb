@@ -1,11 +1,6 @@
 class User < ActiveRecord::Base
-    # has_many :projects, foreign_key: "owner_id"
-    # has_many :partners, foreign_key: "partner_id"
-    # has_many :groups, through: :projects 
-    # has_many :partners, through: :groups
     has_many :project_features,  dependent: :destroy 
     has_many :projects, through: :project_features
-   
     validates :email, :uniqueness => { case_sensitive: false }, presence: true
     validates :name , presence: true
     has_secure_password

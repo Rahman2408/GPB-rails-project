@@ -10,7 +10,7 @@
 
 <h1>All Other Projects</h1>
 
-<% Project.all.where.not(owner_id: @user.id).each do |p|%>
+<% Project.all.where_not_mine(@user.id).each do |p|%>
 
 <h2><%=  link_to p.title, project_path(p) %> - by <%= p.owner.name%></h2>
 

@@ -2,8 +2,9 @@
 <h1>Group Project Builder</h1>
     <p>Where Great Ideas Start, How All Ideas Evolve</p>
   <% if logged_in? %>
+    <%= link_to 'Home', root_path %>
     <%= link_to 'Projects', projects_path %>
-    <%= link_to "Accout", user_path(current_user.id) %>
+    <%= link_to "Profile", user_path(current_user.id) %>
     <%= link_to "Log Out", logout_path, method: "delete" %>
   <% else %>
     <%= link_to "Log In", login_path %>

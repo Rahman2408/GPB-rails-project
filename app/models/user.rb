@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     has_many :projects, -> {distinct}, through: :project_features
     has_many :partners, -> {distinct}, class_name: "User", foreign_key: "project_owner_id"
     belongs_to :project_owner, class_name: "User", optional: true
+    scope :not_me, ->(user) {where.not("id = ?", user)}
     validates :email, :uniqueness => { case_sensitive: false }, presence: true
     validates :name , presence: true
     has_secure_password
@@ -13,6 +14,18 @@ class User < ActiveRecord::Base
             user.name = user_creds[:name]
             user.password = SecureRandom.hex
         end
+    end
+    
+    def self.common_partners(user)
+        user = self.find(user)
+        user.partners 
+       
+    end
+
+    def self.other_users(user)
+        user = self.find(user)
+        all.not_me(user).select {|p| p.partners != user.partners}
+        
     end
 
     def self.search(string)

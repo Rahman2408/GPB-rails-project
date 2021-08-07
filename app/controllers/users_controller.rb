@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show]
-    
+    before_action :set_user, only: [:show, :index]
+   
+    def index
+        @common_partners = User.common_partners(@user.id)     #temporary  -- mayber make private
+        @other_users = User.other_users(@user.id) #temporary
+    end
+
     def new 
         @user = User.new 
     end

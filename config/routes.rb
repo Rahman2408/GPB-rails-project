@@ -5,11 +5,8 @@ Rails.application.routes.draw do
     resources :project_features, as: "features"
   end
 
-  resources :users, only: [:new, :create, :show, :index] do 
-    resources :groups, only: [:new, :create, :show, :index]
-    post "/groups/:id/delete" => "groups#delete"
-    
-  end
+  resources :users, only: [:new, :create, :show, :index] 
+   
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"
   match "/logout", to: "sessions#logout", via: [:get, :post]

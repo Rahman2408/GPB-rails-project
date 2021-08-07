@@ -1,0 +1,7 @@
+<h1>Edit <%= @project.title %></h1>
+
+<%= form_for @project, url: project_path(@project) , method: "patch"  do |f| %>
+
+  <%= render partial: "form", locals: {f: f} %>
+<%= f.submit %>
+<% end%>

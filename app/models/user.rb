@@ -20,12 +20,4 @@ class User < ActiveRecord::Base
         end 
      end
 
-     def  self.name_search(string)
-        if string.present?
-            find_by(name: string).name
-        else
-            self.all 
-        end
-    end   
-
 end 

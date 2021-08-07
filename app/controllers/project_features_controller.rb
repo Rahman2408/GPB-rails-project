@@ -13,7 +13,7 @@ skip_before_action :set_project, only: [:update]
   end
 
   def create 
-    @feature = ProjectFeature.create(feature_params)
+    @feature = ProjectFeature.new(feature_params)
     @feature.update(user_id: @user.id, project_id: @project.id)
    
     if @feature.save 

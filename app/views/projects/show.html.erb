@@ -12,4 +12,8 @@
     
 <%= button_to "Add Feature", new_project_feature_path(@project.id), method: "get" %><br><br>
 
-<%= button_to "Delete Project", {action: "destroy"}, method: "delete" if @project.is_mine(current_user) %>
+<% if @project.is_mine(current_user) %>
+<%= button_to "Edit Project", {action: "edit"}, method: "get"  %>
+<br><br>
+<%= button_to "Delete Project", {action: "destroy"}, method: "delete"  %>
+<% end %>

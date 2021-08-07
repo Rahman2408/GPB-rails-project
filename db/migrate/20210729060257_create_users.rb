@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :email
       t.string :password_digest
-     
+      t.references :project_owner,  foreign_key: { to_table: :users }
     end
   end
 end

@@ -36,9 +36,12 @@ ActiveRecord::Schema.define(version: 2021_08_05_210421) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.integer "project_owner_id"
+    t.index ["project_owner_id"], name: "index_users_on_project_owner_id"
   end
 
   add_foreign_key "project_features", "projects"
   add_foreign_key "project_features", "users"
   add_foreign_key "projects", "users", column: "owner_id"
+  add_foreign_key "users", "users", column: "project_owner_id"
 end

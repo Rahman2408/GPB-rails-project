@@ -34,7 +34,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    byebug
     @project.update(title: project_params[:title], goal: project_params[:goal])
      
     if @project.save
@@ -65,9 +64,9 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :goal, :project_features_attributes => [:name, :description])
   end
 
-    def set_project_groups
-      @projects = Project.where_mine(current_user.id).uniq
-      @helping_projects = Project.helping_projects(current_user.id).uniq
-      @other_projects = Project.other_projects(current_user.id).uniq
-    end
+  def set_project_groups
+    @projects = Project.all.select { |p| p.owner_id == current_user.id}
+    @helping_projects = Project.helping_projects(current_user.id).uniq
+    @other_projects = Project.other_projects(current_user.id).uniq
+  end
 end

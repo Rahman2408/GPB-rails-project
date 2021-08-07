@@ -17,6 +17,7 @@ skip_before_action :set_project, only: [:update]
     @feature.update(user_id: @user.id, project_id: @project.id)
    
     if @feature.save 
+      @project.owner.partners << @user if @project.owner.id != @user.id
       flash[:notices] = ["Feature Added!"]
       redirect_to project_feature_path(project_id: @project.id, id: @feature.id)
     else

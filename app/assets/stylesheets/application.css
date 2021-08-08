@@ -52,7 +52,13 @@
     font-weight: 400;
     line-height: 2;
 }
- .navbar a {
+
+   .partners ul {
+       color: rgba(245, 245, 245, 0.653);
+       font-size: xx-large;
+}
+ 
+   .navbar a {
     background-color: rgba(245, 245, 245, 0.653);
     border: 2px rgb(255, 183, 0) solid; 
     

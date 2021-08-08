@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2021_08_05_210421) do
   create_table "project_features", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "user_id", null: false
-    t.integer "project_id", null: false
+    t.integer "user_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_project_features_on_project_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_210421) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "goal"
-    t.integer "owner_id", null: false
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_projects_on_owner_id"

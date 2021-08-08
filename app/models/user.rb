@@ -1,5 +1,5 @@
-class User < ActiveRecord::Base
-    has_many :projects , inverse_of: :owner
+class User < ApplicationRecord
+    has_one :project, inverse_of: :owner
     has_many :project_features
     has_many :projects, -> {distinct}, through: :project_features
     has_many :partners, -> {distinct}, class_name: "User", foreign_key: "project_owner_id"
@@ -11,29 +11,18 @@ class User < ActiveRecord::Base
 
     def self.github_access(user_creds)
         find_or_create_by(email: user_creds[:email]) do |user|
-            user.name = user_creds[:name]
-            user.password = SecureRandom.hex
+          user.name = user_creds[:name]
+          user.password = SecureRandom.hex
         end
     end
     
     def self.common_partners(user)
         user = self.find(user)
         user.partners 
-       
     end
 
     def self.other_users(user)
         user = self.find(user)
         all.not_me(user).select {|p| p.partners != user.partners}
-        
-    end
-
-    def self.search(string)
-        if string.present?
-        where("name or email LIKE ?", "%#{string}%")
-        else 
-          self.all
-        end 
-     end
-
+    end 
 end 

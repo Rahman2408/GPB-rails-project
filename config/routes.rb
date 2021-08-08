@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :project_features, as: "features"
   end
 
-  resources :users, only: [:new, :create, :show, :index] 
+  resources :users, only: [:new, :create, :edit, :update, :show, :index]
    
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"

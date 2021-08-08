@@ -6,5 +6,5 @@ class ProjectFeature < ActiveRecord::Base
   def is_mine(user)
     self.user_id == user ?  true : false
   end
-
+  
 end

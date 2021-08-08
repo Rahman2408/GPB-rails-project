@@ -3,8 +3,8 @@ class CreateProjectFeatures < ActiveRecord::Migration[6.1]
     create_table :project_features do |t|
       t.string :name
       t.text :description
-      t.belongs_to :user, null: false, foreign_key: true
-      t.belongs_to :project, null: false, foreign_key: true
+      t.belongs_to :user, foreign_key: true
+      t.belongs_to :project, foreign_key: true
 
       t.timestamps
     end

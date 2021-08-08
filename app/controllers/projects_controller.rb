@@ -8,14 +8,13 @@ class ProjectsController < ApplicationController
 
   def new 
     @project = Project.new
-    @project_features = @project.project_features.build
+    @project.project_features.build
   end
 
   def create 
     @project = Project.new(project_params)
     @project.owner_id = @user.id 
     @project.project_features.update(user_id: current_user.id, project_id: @project.id) 
-    
     if @project.save
       flash[:notices] = ["Project Successfully Created!"]
       redirect_to project_path(@project.id)
@@ -26,16 +25,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
     @project.update(title: project_params[:title], goal: project_params[:goal])
-     
     if @project.save
       flash[:notices] = ["Project Successfully Updated!"]
       redirect_to project_path(@project.id)
@@ -51,7 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   private 
-
+  
   def set_user 
     @user = current_user  
   end

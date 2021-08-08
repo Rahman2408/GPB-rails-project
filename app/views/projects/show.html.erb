@@ -1,19 +1,17 @@
 <h1>Project: <%= @project.title %></h1>
-<h4><%= created_by_at(@project.owner, @project) %></h4>
+
+  <h3><%= created_by_at(@project.owner, @project) %></h3>
+
 <h2>Goal: <%= @project.goal %></h2>
 
 <h2>Features:</h2>
-  
-  <% @project.project_features.each do |feat|%>
-  
-    <%= link_to feat.name, project_feature_path(project_id: @project.id, id: feat.id) %><br><br>
-      
-    <% end %>
-    
-<%= button_to "Add Feature", new_project_feature_path(@project.id), method: "get" %><br><br>
+    <% @project.project_features.each do |feat|%>
+        <%= link_to feat.name, project_feature_path(project_id: @project.id, id: feat.id) %><br><br>  
+     <% end %>
+    <%= button_to "Add Feature", new_project_feature_path(@project.id), method: "get" %><br><br>
 
 <% if @project.is_mine(current_user) %>
-<%= button_to "Edit Project", {action: "edit"}, method: "get"  %>
-<br><br>
-<%= button_to "Delete Project", {action: "destroy"}, method: "delete"  %>
+    <%= button_to "Edit Project", {action: "edit"}, method: "get"  %>
+    <br><br>
+    <%= button_to "Delete Project", {action: "destroy"}, method: "delete"  %>
 <% end %>

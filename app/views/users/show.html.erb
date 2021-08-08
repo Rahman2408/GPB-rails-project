@@ -3,4 +3,4 @@
 <h2>Name: <%= @user.name %>  </h2>
 <h3>Email: <%= @user.email %></h3>
 
-  
+<%= button_to "Update Profile", {action: "edit"}, method: "get"  %>

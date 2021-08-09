@@ -1,14 +1,16 @@
 <div class="partners">
   
   <h1>Project Partners</h1>
-  <h4>Any users contributing to projects you've created appear here. To see projects your're contributing to, check out your <%= link_to 'projects', projects_path %>.</h4>
+  <h4>Any users who've contributed to projects you've created appear here. To see projects your're contributing to, check out your <%= link_to 'projects', projects_path %>.</h4>
+  <br>
   <% if @partners.size > 0 && !@partners.nil? %>
      <ul>
        <% @partners.each do |p|%>
-           <%=p.name%> - <%=p.email%> 
-          <h3>Shared Pojects:<h3>
+           <h3><%=p.name%></h3>
+           <h4>Email:<br> <%=p.email%></h4>
+          <h5>Shared Poject(s)<h5>
            <% (Project.all.where(owner_id: current_user.id) && Project.helping_projects(p.id)).each do |project| %>
-            <h3><%= link_to project.title, project_path(project)%></h3>
+            <h4><%= link_to project.title, project_path(project)%></h4><br>
             <% end%>
         <% end%>
      </ul>

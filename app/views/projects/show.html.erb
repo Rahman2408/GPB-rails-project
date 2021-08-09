@@ -1,13 +1,13 @@
 <h1><%= @project.title %></h1>
-
   <h4><%= created_by_at(@project.owner, @project) %></h4>
 
-<h2>Goal: <%= @project.goal %></h2>
+<h2>Goal</h2>
+<h4><%= @project.goal %></h4>
 
 <h2>Features:</h2>
     <% @project.project_features.each do |feat|%>
         <%= link_to feat.name, project_feature_path(project_id: @project.id, id: feat.id) %><br>
-        <h4><%= added_by_at(feat.user, feat)%> </h4><br>  
+        <h5><%= added_by_at(feat.user, feat)%> </h5><br>  
      <% end %>
     <%= button_to "Add Feature", new_project_feature_path(@project.id), method: "get" %><br><br>
 

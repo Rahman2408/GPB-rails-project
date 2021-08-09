@@ -1,9 +1,12 @@
 
 <h1>Your Projects</h1>
-
+<% unless @projects.blank?%>
 <% @projects.each do |p|%>
     <h2><%=  link_to p.title, project_path(p) %></h2>
   <% end %>
+<% else %>
+    <h4>No projects yet but click below to started!</h4>
+  <% end%>
 
   <%= button_to 'New Project', new_project_path, :method => "get" %>
 
@@ -25,7 +28,7 @@
       <h2><%=  link_to p.title, project_path(p) %></h2>  
       <h4><%= created_by_at(p.owner,p)%></h4>
         <% end%>
-        
+
     <% else %>
       <h4>Nothing Here Yet!</h4>
 

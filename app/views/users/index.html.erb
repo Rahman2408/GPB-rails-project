@@ -3,6 +3,10 @@
   <h1>Project Partners</h1>
   <h4>Any users who've contributed to projects you've created appear here. To see projects your're contributing to, check out your <%= link_to 'projects', projects_path %>.</h4>
   <br>
+  <%= form_tag('/users', method: :get  ) do%>
+  <%= label_tag :search, "Search Partners:" %>
+  <%= text_field_tag :query  %>
+<% end%>
   <% if @partners.size > 0 && !@partners.nil? %>
      <ul>
        <% @partners.each do |p|%>

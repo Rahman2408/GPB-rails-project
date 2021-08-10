@@ -15,7 +15,11 @@ class User < ApplicationRecord
           user.password = SecureRandom.hex
         end
     end
-    
+
+    def self.partner_search(string)
+        where("name LIKE ?", "%#{string}%")
+    end
+
     def self.common_partners(user)
         user = self.find(user)
         user.partners 

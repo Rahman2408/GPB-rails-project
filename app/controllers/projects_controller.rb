@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project.update(title: project_params[:title], goal: project_params[:goal])
-    if @project.save
+    if @project.valid?
       flash[:notices] = ["Project Successfully Updated!"]
       redirect_to project_path(@project.id)
     else

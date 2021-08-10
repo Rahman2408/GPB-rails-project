@@ -2,8 +2,13 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:show, :index, :edit, :update]
    
     def index
-      @partners = @user.partners    
-      @other_users = User.other_users(@user.id) 
+      # byebug
+        if params[:query]
+          @partners = @user.partners.partner_search(params[:query])
+        else    
+          @partners = @user.partners    
+          @other_users = User.other_users(@user.id)
+        end
     end
 
     def new 

@@ -35,7 +35,7 @@ skip_before_action :set_project, only: [:update]
 
   def update
     @feature.update(feature_params)
-      if @feature.save 
+      if @feature.valid? 
         flash[:notices] = ["Feature Updated!"]
         redirect_to project_feature_path(project_id: @feature.project_id, id: @feature.id)
       else

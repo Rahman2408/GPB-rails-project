@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2021_08_05_210421) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "project_features", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "user_id"
-    t.integer "project_id"
+    t.bigint "user_id"
+    t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_project_features_on_project_id"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_210421) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "goal"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_projects_on_owner_id"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_210421) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "project_owner_id"
+    t.bigint "project_owner_id"
     t.index ["project_owner_id"], name: "index_users_on_project_owner_id"
   end
 

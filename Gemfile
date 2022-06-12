@@ -14,7 +14,6 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -68,4 +67,3 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # gem "omniauth-rails", "~> 0.6.0"
 
-gem "yarn", "~> 0.1.1"

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root :to => "welcome#home"
+  root "welcome#home"
   resources :projects do 
     resources :project_features, as: "features"
   end

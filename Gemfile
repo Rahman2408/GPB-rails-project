@@ -67,3 +67,5 @@ gem "omniauth", "~> 2.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # gem "omniauth-rails", "~> 0.6.0"
+
+gem "yarn", "~> 0.1.1"

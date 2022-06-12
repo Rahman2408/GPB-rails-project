@@ -22,8 +22,9 @@ class SessionsController < ApplicationController
     end
 
     def git_goin 
-        user_creds = request.env["omniauth.auth"]["info"]
+        user_creds = request.env["omniauth.auth"]
         user = User.github_access(user_creds)
+        # byebug
             if user 
                 session[:user_id] = user.id
                 flash[:notices] = ["Welcome #{user.name}!"]

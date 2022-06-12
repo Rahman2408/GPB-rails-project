@@ -10,8 +10,9 @@ class User < ApplicationRecord
     has_secure_password
 
     def self.github_access(user_creds)
-        find_or_create_by(email: user_creds[:email]) do |user|
-          user.name = user_creds[:name]
+        find_or_create_by(email: user_creds[:info][:email]) do |user|
+          user.id = user_creds.uid
+          user.name = user_creds[:info][:name]
           user.password = SecureRandom.hex
         end
     end
